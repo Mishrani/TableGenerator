@@ -1,0 +1,17 @@
+.navg-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid black;
+  margin: 10px;
+  align-items: center;
+}
+
+.middle-row {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 100px;
+  justify-content: space-around;
+}

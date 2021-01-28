@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Generator from './components/generator/Generator';
+import Navigator from './components/navigator/Navigator';
+import Table from './components/table/Table';
 
 function App() {
+  const [rows,setRows] = useState(0);
+  const [cols,setCols] = useState(0);
+  const [selectedCell,setSelectedCell] = useState({row:null,col: null})
+  useEffect(()=>{setSelectedCell({row:0,col:0})},[rows,cols])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App abcd">
+      <Generator setAppRow={setRows} setAppCol={setCols}/>
+      <Navigator rows={rows} cols={cols} selectedCell={selectedCell} setSelectedCell={setSelectedCell}/>
+      {(rows!==0)&&<Table rows={rows} cols={cols} selectedCell={selectedCell}/>}
     </div>
   );
 }
